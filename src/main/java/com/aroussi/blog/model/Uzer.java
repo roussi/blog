@@ -1,5 +1,6 @@
 package com.aroussi.blog.model;
 
+import lombok.Builder;
 import lombok.Data;
 import org.hibernate.validator.constraints.UniqueElements;
 
@@ -11,6 +12,7 @@ import java.util.Collection;
 
 @Data
 @Entity
+@Builder
 @Table(name = "AR_USER")
 public class Uzer extends AbstractModel{
 
@@ -20,23 +22,23 @@ public class Uzer extends AbstractModel{
     @NotNull
     @Size(min = 8)
     private String password;
+
     @Email
     @NotNull
-    @UniqueElements
     private String email;
 
     private String firstname;
 
     private String lastname;
 
-    /*
+
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_role",
+    @JoinTable(name = "AR_USER_ROLE",
             joinColumns = {
                     @JoinColumn(name = "user_id",referencedColumnName = "id")
             },
             inverseJoinColumns = {
                     @JoinColumn(name = "role_name", referencedColumnName = "name")
             })
-    private Collection<Role> roles; */
+    private Collection<Role> roles;
 }

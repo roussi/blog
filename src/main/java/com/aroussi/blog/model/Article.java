@@ -1,5 +1,6 @@
 package com.aroussi.blog.model;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import java.time.LocalDate;
 import java.util.Collection;
 
 @Data
+@Builder
 @Entity
 @Table(name = "AR_ARTICLE")
 public class Article extends AbstractModel{
@@ -30,16 +32,16 @@ public class Article extends AbstractModel{
     @JoinColumn(name = "topic_id")
     private Topic topic;
 
-    /*
+
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "article_tag",
+    @JoinTable(name = "AR_ARTICLE_TAG",
             joinColumns = {
                 @JoinColumn(name = "article_id",referencedColumnName = "id")
             },
             inverseJoinColumns = {
                 @JoinColumn(name = "tag_id", referencedColumnName = "id")
             })
-    private Collection<Tag> tags; */
+    private Collection<Tag> tags;
 
 
 
